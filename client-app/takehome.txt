@@ -1,0 +1,19 @@
+-- it is not obligatory to use routing in an application if it is small
+we haven't been using routing in our application until section 8 (we used conditionals like selectedActivity && <ActivityDetails /> in order to show the activity details component based on a certain logic)
+
+-- methods while still without routing (conditional rendering)
+    selectActivity = (id: string) => {
+        this.selectedActivity = this.activityRegistry.get(id);
+    }
+    cancelSelectedActivity = () => {
+        this.selectedActivity = undefined;
+    }
+    openForm = (id?: string) => {
+        id ? this.selectActivity(id) : this.cancelSelectedActivity();
+        this.editMode = true;
+    }
+    closeForm = () => {
+        this.editMode = false;
+    }
+
+
