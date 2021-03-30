@@ -8,7 +8,7 @@ import ActivityList from "./ActivityList";
 
 
 export default observer(function ActivityDashboard() {
-    
+
     const {activityStore} = useStore();
     const { loadActivities, activityRegistry } = activityStore
 

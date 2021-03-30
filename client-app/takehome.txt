@@ -16,4 +16,7 @@ we haven't been using routing in our application until section 8 (we used condit
         this.editMode = false;
     }
 
+-- the switch in react router specifies that only one route can be accessed at any one-time,
+if we use the Route tags only we might end up with more than one Route accessed together 
+in the case of error component for example the switch solved that
 
