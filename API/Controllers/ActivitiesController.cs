@@ -9,10 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    // [AllowAnonymous]
+    // Allows anonymous requests for the whole controller
     public class ActivitiesController : BaseApiController
     {
-
-        [AllowAnonymous]
+        // [AllowAnonymous]
+        // Allows anonymous requests for the get endpoint only
         [HttpGet]
         public async Task<ActionResult<List<Activity>>> GetActivities()
         {
@@ -33,6 +35,7 @@ namespace API.Controllers
             return HandleResult(await Mediator.Send(new Create.Command { Activity = activity }));
         }
 
+        [Authorize(Policy = "IsActivityHost")]
         [HttpPut("{id}")]
         public async Task<IActionResult> EditActivity(Guid Id, Activity activity)
         {
@@ -44,6 +47,12 @@ namespace API.Controllers
         public async Task<IActionResult> DeleteActivity(Guid id)
         {
             return HandleResult(await Mediator.Send(new Delete.Command { Id = id }));
+        }
+        
+        [HttpPost("{id}/attend")]
+        public async Task<IActionResult> attend(Guid id)
+        {
+            return HandleResult(await Mediator.Send(new UpdateAttendance.Command{Id = id}));
         }
     }
 }
