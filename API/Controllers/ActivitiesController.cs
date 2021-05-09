@@ -23,7 +23,7 @@ namespace API.Controllers
 
 
         [HttpGet("{id}")] // activities/id
-        public async Task<IActionResult> GetActivity(Guid id)
+        public async Task<IActionResult> GetActivity([FromRoute]Guid id)
         {
             // var result = await Mediator.Send(new Details.Query { Id = id });
             return HandleResult(await Mediator.Send(new Details.Query { Id = id }));
