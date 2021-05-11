@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-// using System.ComponentModel.DataAnnotations;
+ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
     public class Activity
     {
-
         public Guid Id { get; set; }
 
         // [Required]
